@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block social %}
+Create post 
+{% endblock social %}
+{% block stuff %}
+{% load crispy_forms_tags %}
+ 
+ <div class="container">
+	<!-- we are telling the -->
+	<div class=" row">
+	<form action="{% url 'creat_post' %}"  method="post" enctype ="multipart/form-data">{{create_form|crispy}}
+		{% csrf_token %} 
+	<input type="submit" value="Submit" class="btn btn-lg btn-primary"></form>
+	
+	<!-- .as_p is to put the form things in vertical way*/ -->
+	</div>
+</div>
+
+
+
+
+{% endblock stuff %}

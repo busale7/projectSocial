@@ -13,6 +13,28 @@ def postslist(request):
 	}
 	return render(request,"posts_list.html", context)
 
+def creat_post(request):
+	'''if not (request.user.is_staff or request.user.is_superuser):
+								return HttpResponse("<h1> AMIGO YOU CANT ACCESS the page!</h1>")'''
+	form =PostsForm(request.POST or None, request.FILES or None)
+	if form.is_valid():
+		post=form.save(commit=False)
+		post.owner=request.user
+		post.save()
+		messages.success(request,"Successfully Created")
+		return redirect('posts_list')
+	context ={
+		"create_form":form
+
+	}
+	return render(request, "create_post.html", context)
+
+def delete_post(request,post_id):
+	if not (request.user.is_staff or request.user.is_superuser):
+		raise Http404
+	Posts.objects.get(id=post_id).delete()
+	return redirect("posts_list")
+
 def signup(request):
 	form =SignupForm()
 	if request.method =="POST":

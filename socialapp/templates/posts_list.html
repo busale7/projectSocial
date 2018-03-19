@@ -14,12 +14,17 @@ List
 		{% endif %}
 		</div> 
   <div class="card-body">
+  	 <h2 class="card-text">{{tweet.author}}</h2>
     <h5 class="card-title">Title : {{tweet.title}}</h5>
     <p class="card-text">{{tweet.Details}}</p>
     <p class="card-text">{{tweet.Date_added}}</p>
-      <p class="card-text">{{tweet.Date_added}}</p>
-    <a href="#" class="btn btn-primary">{{tweet.author}}</a>
+    <p class="card-text">{{tweet.Date_added}}</p>
+   
+    <a href="{% url 'delete' post_id=tweet.id %}" class="btn btn-secondary" > Delete </a>
   </div>
-  	{% endfor %}
+
+  	
+  
+{% endfor %}
 </div>
 {% endblock stuff %}
