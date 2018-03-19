@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Posts
 from .forms import PostsForm ,SignupForm, LoginForm
@@ -38,7 +38,7 @@ def user_login(request):
 			authen = authenticate(username=username ,password=password)
 			if authen is not None:
 				login(request, authen)
-				return redirect("login")
+				return redirect("posts_list")
 	context ={
 		"form":form
 	}
