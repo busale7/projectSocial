@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block social %}
+List
+{% endblock social %}
+{% block stuff %}
+
+<div class="card">
+  <div class="card-header">
+    {% for tweet in post %}
+  </div>
+  <div align="center"> 
+		{% if tweet.image %}
+		<img class="card-img-top" style="width: 6rem;" src="{{tweet.image.url}}" alt="Card image cap"> 
+		{% endif %}
+		</div> 
+  <div class="card-body">
+    <h5 class="card-title">Title : {{tweet.title}}</h5>
+    <p class="card-text">{{tweet.Details}}</p>
+    <p class="card-text">{{tweet.Date_added}}</p>
+      <p class="card-text">{{tweet.Date_added}}</p>
+    <a href="#" class="btn btn-primary">{{tweet.author}}</a>
+  </div>
+  	{% endfor %}
+</div>
+{% endblock stuff %}

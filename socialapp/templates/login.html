@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block social %}
+loging 
+{% endblock social %}
+{% block stuff %}
+{% load crispy_forms_tags %}
+
+
+
+<div class="container">
+	<br>
+	 <form action="{% url 'login' %}" method="POST" enctype="multipart/form-data">
+	 	{% csrf_token %}
+	 	{{form|crispy}}
+	 	<input type ="submit" value="Login!" class="btn btn-outline-success">
+	 </form>
+ </div>
+
+{% endblock stuff %}

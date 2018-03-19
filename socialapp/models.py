@@ -2,13 +2,20 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class posts(models.Model):
+class Posts(models.Model):
 	title =models.CharField(max_length=125)
 	author =models.ForeignKey(User, default=1, on_delete=models.CASCADE)
 	Details= models.TextField()
-	Date_added= models.DateField()
-	added_time=models.TimeField()
-
+	Date_added= models.DateTimeField(auto_now_add=True)
+	image= models.ImageField(null=True)
+	
 	def __str__(self):
 		return self.title
+
+class profile(models.Model) :
+	avatar = models.ImageField('profile picture', upload_to='static/media/images/avatars/', null=True, blank=True)
+	followers= models.ManyToManyField(User, related_name="followers")
+	user_name =models.OneToOneField(User ,default=1 , on_delete=models.CASCADE, related_name="user")
+	following =models.ManyToManyField(User, related_name="following")
+
 
