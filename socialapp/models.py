@@ -19,3 +19,8 @@ class profile(models.Model) :
 	following =models.ManyToManyField(User, related_name="following")
 
 
+class favorit(models.Model): 
+	
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	story =models.ForeignKey(Posts,on_delete=models.CASCADE)
+	

@@ -6,7 +6,7 @@ from django.contrib.auth.models import User #importing User from models
 class PostsForm(forms.ModelForm):
 	class Meta: 
 		model=Posts
-		fields='__all__'
+		fields=['title', 'Details', 'image']
 		widgets= {
 			"add_date" : forms.DateInput(attrs={"type":"date"})
 		}

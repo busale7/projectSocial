@@ -6,7 +6,7 @@ List
 
 <div class="card">
   <div class="card-header">
-    {% for tweet in post %}
+    {% for tweet in posts %}
   </div>
   <div align="center"> 
 		{% if tweet.image %}
@@ -19,12 +19,39 @@ List
     <p class="card-text">{{tweet.Details}}</p>
     <p class="card-text">{{tweet.Date_added}}</p>
     <p class="card-text">{{tweet.Date_added}}</p>
+    <button class="btn btn-secondary" onclick="Hello({{tweet.id}})">
+				<span id="waink-number-{{tweet.id}}"> {{tweet.favorit_set.all.count}}</span>
+		    	<i id="waink-color-{{tweet.id}}"class="far fa-thumbs-up {% if tweet in my_likes %}text-danger{% endif%}"></i>
+			</button>
    
     <a href="{% url 'delete' post_id=tweet.id %}" class="btn btn-secondary" > Delete </a>
   </div>
 
   	
   
-{% endfor %}
+    {% endfor %}
 </div>
+<br>
+<script> function Hello(id) {
+			
+			$.ajax({
+				type:"GET",
+				url:"/like/"+id,
+				error:function(){console.log("Failed!! ")},
+				success:function(data){
+					console.log(data);
+					$("#waink-number-"+id).text(data.count);
+					if(data.action==="favorit"){
+						$("#waink-color-"+id).addClass("text-danger");
+
+					}
+					else {
+						$("#waink-color-"+id).removeClass("text-danger");
+						}
+				}
+			})
+}
+
+
+</script>
 {% endblock stuff %}
