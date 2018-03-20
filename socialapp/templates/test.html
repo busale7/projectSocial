@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block social %}
+update user 
+{% endblock social %}
+{% block stuff %}
+ 
+ <div class="container">
+		
+		
+			<div class="card card text-center col-md-6" style="width: 18rem;">
+			  <div class="card-body">
+			    <h5 class="card-title"> UserName: {{tests.author}}</h5>
+			    
+			  
+			    <a href="{% url 'posts_list' %}" class="btn btn-secondary">Back </a>
+			    
+			  </div>
+			</div>
+		
+
+	
+</div>
+
+
+
+{% endblock stuff %}

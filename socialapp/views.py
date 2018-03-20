@@ -8,18 +8,30 @@ from django.contrib import messages
 from django.db.models import Q
 
 # Create your views here.
+def testing(request,user_id):
+	context ={
+	"tests":Posts.objects.get(id=user_id),
+
+
+	}
+	return render(request,"test.html", context)
+
+'''def user_detail(request,user_id):
+	user_obj=User.objects.get(id=user_id)'''
+
 def postslist(request):
 	if request.user.is_anonymous:
 		return redirect('login')
 	object_list = Posts.objects.all().order_by('Date_added')
 	query= request.GET.get('q')
 	if query:
-		object_list=object_list.filter(title__contains=query)
+		object_list=object_list.filter(author__username__icontains=query) #for searching /filtering the authors
 	
 	liked_posts=[]
 	likes=request.user.favorit_set.all()
 	for like in likes: 
 		liked_posts.append(like.story)
+	
 	context={
 		"posts": object_list,
 		"my_likes": liked_posts,

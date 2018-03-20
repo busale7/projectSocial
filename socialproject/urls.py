@@ -29,6 +29,7 @@ urlpatterns = [
     path('create/',views.creat_post, name="creat_post"),
     path('delete/<int:post_id>/', views.delete_post, name='delete'),
     path('like/<int:post_id>',views.like, name="like-button"),
+    path('test/<int:user_id>',views.testing, name="test"),
     
 
 
