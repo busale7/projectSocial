@@ -30,6 +30,7 @@ urlpatterns = [
     path('delete/<int:post_id>/', views.delete_post, name='delete'),
     path('like/<int:post_id>',views.like, name="like-button"),
     path('test/<int:user_id>',views.testing, name="test"),
+    path('profile/<int:profile_id>',views.user_profile, name="profilee"),
     
 
 

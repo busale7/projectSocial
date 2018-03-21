@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse ,Http404 , HttpResponse
-from .models import Posts, favorit
+from .models import Posts, favorit,profile
 from .forms import PostsForm ,SignupForm, LoginForm
 from django.contrib.auth import authenticate , login ,logout
 from django.contrib.auth.models import User
@@ -11,6 +11,7 @@ from django.db.models import Q
 def testing(request,user_id):
 	context ={
 	"tests":Posts.objects.get(id=user_id),
+	"profiles":profile.objects.get(id=user_id),
 
 
 	}
@@ -127,4 +128,13 @@ def like(request, post_id):
 
 	}
 	return JsonResponse(context,safe=False)
+
+def user_profile(request,profile_id):
+	user = User.objects.get(id=profile_id)
+	context ={
+	"profiles":profile.objects.get(user_name=user),
+
+	}
+	return render(request,"profile.html", context)
+
 

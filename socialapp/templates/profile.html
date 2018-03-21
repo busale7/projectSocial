@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block social %}
-update user 
+ user  Profile
 {% endblock social %}
 {% block stuff %}
  
@@ -9,8 +9,9 @@ update user
 		
 			<div class="card card text-center col-md-6" style="width: 18rem;">
 			  <div class="card-body">
-			    <h5 class="card-title"> UserName:  </h5>
-			    <h5 class="card-title"> following: {{profiles.followers}}</h5>
+			    <h5 class="card-title"> UserName: {{profiles.user_name.username}} </h5>
+			    <h5 class="card-title"> following: {{profiles.following.all}}</h5>
+			    <h5 class="card-title"> followers: {{profiles.followers.all}}</h5>
 			    
 			  
 			    <a href="{% url 'posts_list' %}" class="btn btn-secondary">Back </a>
@@ -21,7 +22,6 @@ update user
 
 	
 </div>
-
 
 
 {% endblock stuff %}

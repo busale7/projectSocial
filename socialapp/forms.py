@@ -1,7 +1,10 @@
 from django import forms
+from django.core.files.images import get_image_dimensions
 
 from .models import Posts #importing the class Business from models.py
 from django.contrib.auth.models import User #importing User from models
+
+
 
 class PostsForm(forms.ModelForm):
 	class Meta: 

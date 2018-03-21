@@ -15,7 +15,7 @@ List
 		</div> 
   <div class="card-body">
   	 <h2 class="card-text">{{tweet.author}}</h2>
-    <h5 class="card-title"><a href="{%url 'test' user_id=tweet.id %}">Title : {{tweet.title}}</h5></a>
+    <h5 class="card-title"><a href="{%url 'profilee' profile_id=tweet.author.id %}">Title : {{tweet.title}}</h5></a>
     <p class="card-text">{{tweet.Details}}</p>
     <p class="card-text">{{tweet.Date_added}}</p>
     <p class="card-text">{{tweet.Date_added}}</p>
